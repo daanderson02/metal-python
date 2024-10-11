@@ -1,4 +1,4 @@
-# metal-archives-scraper
+# Metal Python
  
 a set of scripts meant to scrape, combine, and clean data received from metal-archives.com. collects the following stuff (see MetalPy.py for further info): 
 

@@ -417,7 +417,7 @@ def scrape_all_letters():
             # save the letter's data to csv file (located in data folder)
             csv_file_path = f'./data/{letter} scrape.csv'
             df = pd.DataFrame(bands, columns=[
-                'Band Name', 'Country', 'Genre', 'Theme', 'Band Status', 'Year Formed', 'Label',
+                'Band Name', 'Country', 'Genre', 'Themes', 'Band Status', 'Year Formed', 'Label',
                 'Number of Reviews', 'Number of EPs', 'Number of Full-Lengths',
                 'Number of Demos', 'Average Review Score', 'Min Review Score', 'Max Review Score', 'Added By', 'Added On', 'Band ID'
             ])

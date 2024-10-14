@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 # load the original database spreadsheet
 file_path = 'full database.xlsx'
-sheet_name = 'Sheet1' 
+sheet_name = 'data' 
 genre_column = 'Genre'  
 
 # read the Excel file

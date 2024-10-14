@@ -2,7 +2,7 @@
  
 a set of scripts meant to scrape, combine, and clean data received from metal-archives.com. collects the following stuff (see MetalPy.py for further info): 
 
-                'Band Name', 'Country', 'Genre', 'Theme', 'Band Status', 'Year Formed', 'Label',
+                'Band Name', 'Country', 'Genre', 'Themes', 'Band Status', 'Year Formed', 'Label',
                 'Number of Reviews', 'Number of EPs', 'Number of Full-Lengths',
                 'Number of Demos', 'Average Review Score', 'Min Review Score', 'Max Review Score', 'Added By', 'Added On', 'Band ID'
 

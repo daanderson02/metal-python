@@ -94,10 +94,12 @@ keywords_map = {
     'noise': 'Ambient',
     'punk': 'Punk',
     'southern': 'Heavy Metal',
-    'various': 'Various',
     'electronic': 'Ambient',
     'neofolk': 'Neofolk',
     'ambient': 'Ambient',
+    'oi': 'Punk',
+    'various': 'Various',
+    'gorenoise': 'Grindcore',
 
     # add more as needed
 }
@@ -117,17 +119,17 @@ def replace_genres(genre_string):
         if all(re.search(r'\b' + re.escape(keyword) + r'\b', genre_string) for keyword in keyword_list):
             return replacement  
 
-    return 'Undefined'  # returns undefined if no keywords match
+    return 'undef ' + genre_string  # returns undefined if no keywords match
 
 # extract later genres
-def extract_later_genres(genre_str):
-    # find all instances of "(later)" or similar variations and extract the genres preceding them
-    matches = re.findall(r'([A-Za-z\s]+)\s?\((?:early\/later|later|mid)\)', genre_str)
+def extract_later_genres(genre_string):
+    # find all instances of "(later)"
+    matches = re.findall(r'([A-Za-z\/\-\s]+)\s?\(later\)', genre_string)
     if matches:
-        # join and return the cleaned genre names
-        return ', '.join(set(matches))
+        # clean up any extra spaces and join the results
+        return ', '.join([genre.strip() for genre in matches])
     else:
-        return genre_str 
+        return genre_string
 
 # later genres ONLY
 df['Genre'] = df['Genre'].apply(extract_later_genres)

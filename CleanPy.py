@@ -5,13 +5,14 @@ from tqdm import tqdm
 # script to clean genres up to make them easier to visualize in data visualization programs.
 # does a few things. first, it searches for instances of (later) or (early)  or (mid). 
 # if it finds this, it finds the later genre and keeps only that. then it iterates through
-# keywords_map with a simple for loop and replaces the string with whatever genre comes first.
+# keywords_map with a simple for loop and replaces the string with whatever genre comes first. pushes changes to a new column.
 # also has some special compounded keywords. finally just saves it out to xlsx
 
 # load the original database spreadsheet
 file_path = 'full database.xlsx'
 sheet_name = 'data' 
 genre_column = 'Genre'  
+new_genre_column = 'Simple Genre'
 
 # read the Excel file
 df = pd.read_excel(file_path, sheet_name=sheet_name)
@@ -131,11 +132,15 @@ def extract_later_genres(genre_string):
     else:
         return genre_string
 
+
+# create simple genre and copy stuff over
+df.insert(3,new_genre_column,df[genre_column])
+
 # later genres ONLY
-df['Genre'] = df['Genre'].apply(extract_later_genres)
+df[new_genre_column] = df[new_genre_column].apply(extract_later_genres)
 
 # good genres ONLY
-df[genre_column] = df[genre_column].progress_apply(replace_genres)
+df[new_genre_column] = df[new_genre_column].progress_apply(replace_genres)
 
 # save changes ONLY
 df.to_excel(file_path, sheet_name=sheet_name, index=False)
